@@ -211,7 +211,7 @@ for j in target_integers:
         if random_integers[i] == j:
             targets_found.append(j)
             comparison_counter += 1
-            break
+
         elif i == len(random_integers):
             comparison_counter += 1
             break
@@ -223,4 +223,4 @@ print(targets_found)
 assert targets_found == test_function(random_integers, target_integers)
 print(f'Your code worked! Average number of comparisons per search = {comparison_counter/len(target_integers)}')
 
-#Q4c
+#Q4e
