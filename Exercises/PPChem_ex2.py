@@ -185,3 +185,42 @@ while i > 0:
         i=i-1
 
 #Q4b
+
+def test_function(inp_list, tgts):
+    found_tgts = []
+    for tgt in tgts:
+        if tgt in inp_list:
+            found_tgts.append(tgt)
+    return found_tgts
+
+import random
+
+MAX_SIZE = 10000000 # This is the maximum value of the numbers in the list
+MAX_TGT_VALUE = 10000000 # This is the maximum value of the target numbers
+LENGTH = 10000000 # This is the length of the list
+
+# Here we declare a list of random numbers and a list of random target numbers
+random_integers = [random.randint(0, MAX_SIZE) for i in range(LENGTH)]
+target_integers = [random.randint(0, MAX_TGT_VALUE) for i in range(10)]
+targets_found = []
+
+comparison_counter = 0
+
+for j in target_integers:
+    for i in range(0,len(random_integers)):
+        if random_integers[i] == j:
+            targets_found.append(j)
+            comparison_counter += 1
+            break
+        elif i == len(random_integers):
+            comparison_counter += 1
+            break
+        else:
+            comparison_counter += 1
+
+print(comparison_counter)
+print(targets_found)
+assert targets_found == test_function(random_integers, target_integers)
+print(f'Your code worked! Average number of comparisons per search = {comparison_counter/len(target_integers)}')
+
+#Q4c
