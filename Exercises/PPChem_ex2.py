@@ -99,5 +99,89 @@ def split_list(l):
 
 print(split_list(test_even))
 print(split_list(test_odd))
-123
 
+#Dictionnaries
+
+dict1= {'Boron': 'Group13', 'Sodium': 'Alkaline metal', 'Xenon': 'Noble gas', 'Astatine': 'Halogen', 'Phosphorus': 'Pnictogene'}
+
+dict1['Sulphur'] = 'Chalcogene'
+print(dict1)
+
+#Loops
+
+#Q3a
+
+initial_concentration = 50
+final_concentration = 3
+dilution_count = 0
+while initial_concentration > final_concentration +1:
+    initial_concentration /= 2
+    dilution_count +=1
+
+print("The substance needs to be diluted {} times to reach the desired concentration.".format(dilution_count))
+
+#Q3c: 10,9,8,7,6,5,4,3,2
+
+numa = 11
+while numa > 2.5:
+    numa = numa - 1
+    print(numa)
+
+#Q3d: (0,2,4,6,8)/2.5
+
+numb = 2.5
+for i in range(0, 10, 2):
+    pass
+    print(i/numb)
+
+#Q3e: (10.2,9.2,8.2,7.2,6.2)
+
+numc = 10.2
+while True:
+    if numc < 6.2:
+        break
+    print(numc)
+    numc -= 1
+
+#Q3f:
+#1:
+#2:
+#3:
+#4:
+collected_strings = []
+
+for i in range(1, 5):
+    if i % 2 == 0:
+        for j in range(5):
+            if j == 3:
+                break
+                collected_strings.append(str(j))
+        collected_strings.append(str('F'))
+    else:
+        for j in range(5):
+            if j == 3:
+                continue
+            elif j == 4:
+                pass
+            collected_strings.append(str(j))
+
+for i in range(3):
+    if i == 1:
+        collected_strings.append("!")
+        continue
+    collected_strings.append("?")
+
+collect_str = "".join(collected_strings)
+print(f'Collected string is {collect_str}')
+
+#Q3g
+
+n = 10
+i = 10
+while i > 0:
+    if i % 2 == 0:
+        i=i/2
+    else:
+        i=i-1
+
+#Q4b
