@@ -1,0 +1,3 @@
+Molecule: Azidoazide azide
+Image URL: https://github.com/igorgonteri/ppchem/blob/main/1-Diazidocarbamoyl-5-azidotetrazole.png
+Description: 1-Diazidocarbamoyl-5-azidotetrazole, often jokingly referred to as azidoazide azide,[5] is a heterocyclic inorganic compound with the formula C2N14.[6] It is a highly reactive and extremely sensitive explosive..
