@@ -29,15 +29,15 @@ approved_drugs['NumValenceElectrons'] = approved_drugs['My_Mol'].apply(lambda x:
 
 print(approved_drugs)
 
-def count_atoms(smiles, atom_symbol):
-    mol = Chem.MolFromSmiles(smiles)
+def count_atoms(mol, atom_symbol):
+
     if mol is None:
         return 0  # Handle invalid SMILES
     return len(mol.GetSubstructMatches(Chem.MolFromSmarts(atom_symbol)))
 
 from mordred import Calculator, AtomCount
 
-approved_drugs['Number of F'] = approved_drugs['Smiles'].apply(lambda x: count_atoms(x,'F'))
-approved_drugs['Number of Cl'] = approved_drugs['Smiles'].apply(lambda x: count_atoms(x,'Cl') )
-approved_drugs['Number of Br'] = approved_drugs['Smiles'].apply(lambda x: count_atoms(x, 'Br'))
-approved_drugs['Number of I'] = approved_drugs['Smiles'].apply(lambda x: count_atoms(x,'I'))
+approved_drugs['Number of F'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x,'F'))
+approved_drugs['Number of Cl'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x,'Cl') )
+approved_drugs['Number of Br'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x, 'Br'))
+approved_drugs['Number of I'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x,'I'))
