@@ -29,15 +29,19 @@ approved_drugs['NumValenceElectrons'] = approved_drugs['My_Mol'].apply(lambda x:
 
 print(approved_drugs)
 
-def count_atoms(mol, atom_symbol):
-
-    if mol is None:
-        return 0  # Handle invalid SMILES
-    return len(mol.GetSubstructMatches(Chem.MolFromSmarts(atom_symbol)))
-
+from rdkit import Chem
 from mordred import Calculator, AtomCount
 
-approved_drugs['Number of F'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x,'F'))
-approved_drugs['Number of Cl'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x,'Cl') )
-approved_drugs['Number of Br'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x, 'Br'))
-approved_drugs['Number of I'] = approved_drugs['My_Mol'].apply(lambda x: count_atoms(x,'I'))
+# Only calculate AtomCount descriptors
+calc = Calculator(AtomCount, ignore_3D = True)
+
+# Apply the calculator to the molecules
+mordred_df = calc.pandas(approved_drugs["My_Mol"])
+
+# Only extract the number of halogens
+approved_drugs = pd.concat([approved_drugs, mordred_df[["nF", "nBr", "nCl", "nI"]]], axis = 1)
+
+# Add the total number of halogens
+approved_drugs["nX"] = approved_drugs[["nF", "nBr", "nCl", "nI"]].sum(axis = 1)
+
+print(approved_drugs)
